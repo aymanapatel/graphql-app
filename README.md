@@ -34,4 +34,4 @@
 ## Functions
 
 <>/.netlify/functions/graphql
-https://dashboard.render.com/email-confirm/?token=XyWzhnVzci1ic2k2NDFpcHAxamk1ZjdwbzM3Z6EnUVtn6tVEYOQZztnFq4y6G4aJHOBXODp7F1d1IXeK&next=
+henola7724@kleogb.com

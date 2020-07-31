@@ -29,3 +29,8 @@
 2. Chakra UI
 3. Apollo Client
 4. React, React-Helmet and React-DOM
+
+
+## Functions
+
+<>/.netlify/functions/graphql

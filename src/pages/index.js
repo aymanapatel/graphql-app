@@ -1,8 +1,8 @@
 import React from "react";
 import {useQuery, gql} from "@apollo/client";
-import {Heading, Box, List, ListItem} from "@chakra-ui/core"
+import {Heading, Box, List, ListItem, Text} from "@chakra-ui/core"
 import {Helmet} from "react-helmet"
-import { graphql, useStaticQuery} from "gatsby";
+import { graphql, useStaticQuery, Link} from "gatsby";
 
 
 
@@ -22,18 +22,22 @@ export default function Index() {
         `
     );
 
-    const {data, loading, error} = useQuery(gql`
-    {
-        country(code: "NZ") {
-          name
-          emoji
-          languages {
-            name
-            rtl
-          }
+    const {data, loading, error} = useQuery(
+        gql`
+        {
+            listings {
+                id
+                title
+                description
+                url
+                company {
+                    name
+                    url
+                }
+            }
         }
-    }
-    `);
+        `
+    )
     if (loading) return <div>Loading the universe...</div>
 
     if (error) {
@@ -46,25 +50,35 @@ export default function Index() {
     }
 
     const {title} = site.siteMetadata;
-    const { emoji, name, languages} = data.country;
     return (
             <>
             <Helmet>
                 <title>{title}</title>
             </Helmet>
             <Box as="header" px="4" py="3" bg="gray.200" >
-                Job App
+                {title}
             </Box>
-            <Box padding="4">
-            <Heading>
-                {emoji}{name}
-            </Heading>
-            <List styleType="disc">
-                { languages.map(language => 
-                    <ListItem key={language.code}>{language.name} </ListItem>
-                )}
-            </List>
-           </Box>
+            {data.listings.map( listing => 
+                <Box key={listing.id} padding="4">
+                <Heading>
+                    <Link href={listing.url}>{listing.title}</Link>
+                </Heading>
+                <Text>
+                    {
+                        listing.company.url ? (
+                            <Link href={listing.company.url}>Link: {listing.company.name}</Link>
+                        ) : (
+                            <Link href={listing.company.url}>Static: {listing.company.name}</Link>
+                        
+                        )
+                    }
+                    
+                </Text>
+                <Text>{listing.description}</Text>
+               </Box>
+
+            )}
+            
            </>
     )
 

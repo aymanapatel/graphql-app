@@ -1,8 +1,27 @@
 import React from "react";
 import {useQuery, gql} from "@apollo/client";
+import {Heading, Box, List, ListItem} from "@chakra-ui/core"
+import {Helmet} from "react-helmet"
+import { graphql, useStaticQuery} from "gatsby";
+
+
+
 
 
 export default function Index() {
+
+    const {site} = useStaticQuery( // Fetching from `gatsby-config.js`
+        graphql`
+        {
+            site {
+                siteMetadata {
+                    title
+                }
+            }
+        }
+        `
+    );
+
     const {data, loading, error} = useQuery(gql`
     {
         country(code: "NZ") {
@@ -20,26 +39,33 @@ export default function Index() {
     if (error) {
         return (
             <>
-            <div>Broken</div>
-            <div>
-                { error.errors.map((err,index) => 
-                    <p key={index}>{err.message}</p>
-                )};
-            </div>
+            <div>Universe is Broken</div>
+            
             </>
         );
     }
 
+    const {title} = site.siteMetadata;
     const { emoji, name, languages} = data.country;
-    return <div>
-            <h1>
+    return (
+            <>
+            <Helmet>
+                <title>{title}</title>
+            </Helmet>
+            <Box as="header" px="4" py="3" bg="gray.200" >
+                Job App
+            </Box>
+            <Box padding="4">
+            <Heading>
                 {emoji}{name}
-            </h1>
-            <ul>
+            </Heading>
+            <List styleType="disc">
                 { languages.map(language => 
-                    <li key={language.code}>{language.name} </li>
+                    <ListItem key={language.code}>{language.name} </ListItem>
                 )}
-            </ul>
-           </div>;
+            </List>
+           </Box>
+           </>
+    )
 
 }

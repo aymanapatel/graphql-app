@@ -1,0 +1,17 @@
+{
+  "name": "apollo-graphql",
+  "version": "1.0.0",
+  "description": "An app for job listings using graphql",
+  "main": "index.js",
+  "author": "Ayman Patel",
+  "license": "MIT",
+  "scripts": {
+    "start" : "gatsby develop"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.1.1",
+    "gatsby": "^2.24.15",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

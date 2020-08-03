@@ -7,6 +7,10 @@
 
 <p align="center">
 
+
+  <a href="https://graphql.org/code/">
+    <img alt="Graphql" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTRAt3c3IyQQ4ciJLsNIGKKouvF00KoDbXTAg&usqp=CAU" width="60" />
+  </a>
   <a href="https://www.gatsbyjs.org/docs/">
     <img alt="Gatsby" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT94HQp6pWHX-za2A6yMuteyH-STCas8ZmNQQ&usqp=CAU" width="60" />
   </a>

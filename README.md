@@ -29,7 +29,10 @@
   <a href="https://banner2.cleanpng.com/20180817/fvr/kisspng-postgresql-database-installation-microsoft-sql-ser-bearle-5b7719c70a2b68.6265470715345320390417.jpg">
     <img alt="Postgres" src="https://banner2.cleanpng.com/20180817/fvr/kisspng-postgresql-database-installation-microsoft-sql-ser-bearle-5b7719c70a2b68.6265470715345320390417.jpg" width="60" />
   </a> 
-                                                                                                  
+  <a href="https://docs.cypress.io/guides/overview/why-cypress.html">
+    <img alt="Postgres" src="https://avatars1.githubusercontent.com/u/8908513?s=280&v=4" width="60" />
+  </a> 
+                                                                                                           
 
 </p>
 

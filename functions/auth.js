@@ -23,7 +23,7 @@ const sequelize = new Sequelize(process.env.DB_CONNECTION_STRING, {
     }
   );
   
-  exports.handler = async () => {
+  exports.handler = async (event) => {
   
       try {
           await sequelize.authenticate(); // By default , sync.
@@ -44,7 +44,7 @@ const sequelize = new Sequelize(process.env.DB_CONNECTION_STRING, {
           */
           return {
               statusCode: 200,
-              body: `DB Succesful! Username: ${user.email}! Count: ${count} `
+              body: event.headers.authorization,
   
           };   
       } catch(err) {

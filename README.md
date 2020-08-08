@@ -4,6 +4,7 @@
   Made with :love_letter: using 
 </h2>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4bdfac53-80d2-4817-9e4c-57bdcd098a53/deploy-status)](https://app.netlify.com/sites/job-search-app/deploys)
 
 <p align="center">
 

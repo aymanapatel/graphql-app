@@ -6,7 +6,8 @@
   "author": "Ayman Patel",
   "license": "MIT",
   "scripts": {
-    "start": "gatsby develop"
+    "start": "gatsby develop",
+    "cy:open": "cypress open"
   },
   "dependencies": {
     "@apollo/client": "^3.1.1",
@@ -29,5 +30,12 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "sequelize": "^6.3.4"
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "^6.0.0",
+    "cypress": "^4.12.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11"
   }
+  
 }

@@ -40,9 +40,26 @@
 2. Chakra UI
 3. Apollo Client
 4. React, React-Helmet and React-DOM
+5. [Graphql AuthN & AuthZ Middleware](https://github.com/kkemple/graphql-auth)
+6. Postgres hosted using Render
+7. Sequelize ORM
 
 
-## Functions
+## Setup
 
-<>/.netlify/functions/graphql
-henola7724@kleogb.com
+1. Netlify Environment variable
+2. Render DB connection string
+
+## Todo
+
+1. Add tests
+2. Update Github Actions
+
+## To Read Further
+
+1. ActiveRecord Pattern (Ruby) vs DataRecord Pattern(P of EAA; Hibernate kinda uses DataRecord)
+
+## Misc
+
+URL: localgost:8888/.netlify/functions/graphql
+Email: komaxi4826@brbqx.com

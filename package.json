@@ -34,8 +34,13 @@
   "devDependencies": {
     "@testing-library/cypress": "^6.0.0",
     "cypress": "^4.12.1",
+    "eslint-plugin-cypress": "^2.11.1",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
-  
 }

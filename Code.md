@@ -14,11 +14,3 @@
 # TODO
 
 
-Add this to `package.json`, after fixing linting issues
-`
-"husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  }
-`

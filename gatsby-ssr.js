@@ -7,7 +7,14 @@ const client = new ApolloClient({
     link: new HttpLink({
         fetch,
         uri: ".netlify/functions/graphql",
-    })
+    }),
+    resolvers: {
+        Query: {
+            isLoggedIn() {
+                return localStorage.getItem("jobapp:token")
+            }
+        }
+    }
     
 });
 

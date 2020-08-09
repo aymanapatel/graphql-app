@@ -45,6 +45,3 @@ jobs:
       name: Jest
       with:
         cmd: test # Runs `yarn test` => Jest runner
-
-    - name: Cypress run # Run all Cypress e2e tests 
-      uses: cypress-io/github-action@v2

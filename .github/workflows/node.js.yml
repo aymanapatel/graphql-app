@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -25,6 +25,9 @@ jobs:
     - uses: borales/actions-yarn@v2.0.0
       with:
         cmd: install # `yarn install`
+    - uses: borales/actions-yarn@v2.0.0
+      with:
+        cmd: add -D cypress # `yarn install`  
     - uses: borales/actions-yarn@v2.0.0
       with:
         cmd: test # Runs `yarn test` => Jest runner

@@ -6,6 +6,6 @@
         "jsx-no-multiline-js": false,
         "jsx-no-lambda": false,
         "import-name": false,
-        "no-boolean-literal-comapre": false
+        "no-boolean-literal-compare": false
     }
 }

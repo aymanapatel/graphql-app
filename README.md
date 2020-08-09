@@ -41,6 +41,10 @@
 
 </p>
 
+## Dev setup
+
+1. `netlify dev` or `yarn start`
+
 
 ## Dependencies
 

@@ -22,15 +22,16 @@ jobs:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
+      
     - uses: borales/actions-yarn@v2.0.0
+      name: yarn install
       with:
         cmd: install # `yarn install`
+
     - uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: add -D cypress # `yarn install`  
-    - uses: borales/actions-yarn@v2.0.0
+      name: Jest
       with:
         cmd: test # Runs `yarn test` => Jest runner
-    - uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: cy:open # `yarn cy:open` => Cypress e2e Runner
+
+    - name: Cypress run # Run all Cypress e2e tests 
+      uses: cypress-io/github-action@v2

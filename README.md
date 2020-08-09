@@ -40,6 +40,9 @@
 
 </p>
 
+## Dev setup
+
+1. `netlify dev` or `yarn start`
 
 ## Dependencies
 
@@ -69,4 +72,3 @@
 ## Misc
 
 URL: localgost:8888/.netlify/functions/graphql
-Email: komaxi4826@brbqx.com

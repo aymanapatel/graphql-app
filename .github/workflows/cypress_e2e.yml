@@ -39,4 +39,4 @@ jobs:
     - run: npm install
     - run: npm install cypress --save-dev
     - run: npm run build --if-present
-    - run: cypress run
+    - run: ./node_modules/.bin/cypress open

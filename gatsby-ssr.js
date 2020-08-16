@@ -1,40 +1,44 @@
-import React  from "react";
-import { ApolloProvider, ApolloClient, ApolloLink, HttpLink, InMemoryCache } from '@apollo/client';
+import React from "react";
+import {
+  ApolloProvider,
+  ApolloClient,
+  ApolloLink,
+  HttpLink,
+  InMemoryCache,
+} from "@apollo/client";
 import fetch from "isomorphic-fetch";
 
-
 const httpLink = new HttpLink({
-    fetch,
-    uri: "/.netlify/functions/graphql",
-  });
-  
-  const authLink = new ApolloLink((operation, forward) => {
-    const token = localStorage.getItem("jobapp:token");
-    if (token) {
-      operation.setContext({
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-    }
-  
-    return forward(operation);
-  });
-
-const client = new ApolloClient({
-    cache: new InMemoryCache(),
-    link: authLink.concat(httpLink),
-    resolvers: {
-        Query: {
-            isLoggedIn() {
-                const token = localStorage.getItem("jobapp:token");
-                return Boolean(token);
-            }
-        }
-    }
-    
+  fetch,
+  uri: "/.netlify/functions/graphql",
 });
 
-export const wrapRootElement = ({element}) =>  (
-<ApolloProvider client={client}>{element}</ApolloProvider>
-)//gatsby plugin
+const authLink = new ApolloLink((operation, forward) => {
+  const token = localStorage.getItem("jobapp:token");
+  if (token) {
+    operation.setContext({
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
+
+  return forward(operation);
+});
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: authLink.concat(httpLink),
+  resolvers: {
+    Query: {
+      isLoggedIn() {
+        const token = localStorage.getItem("jobapp:token");
+        return Boolean(token);
+      },
+    },
+  },
+});
+
+export const wrapRootElement = ({ element }) => (
+  <ApolloProvider client={client}>{element}</ApolloProvider>
+);

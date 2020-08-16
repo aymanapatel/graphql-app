@@ -96,17 +96,17 @@ function LoginForm() {
   }
 
   return (
-    <Flex h="100vh" align="center" justify="center" bg="white">
+    <Flex h="100vh" align="center" justify="center" bgImage="url('https://images.unsplash.com/photo-1596923563916-cee5bcd96ef2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
       <Stack
         p="8"
         rounded="lg"
-        shadow="33px 33px 86px #e6e6e6,
-        -33px -33px 86px #ffffff"
+        shadow="33px 33px 86px #F5DEB3,
+        -33px -33px 86px #FFA07A"
         maxW="320px"
         w="full"
         as="form"
         spacing="4"
-        bg="white"
+        bgImage="linear-gradient(to bottom right,#ffe5b4, #ffffff)"
         onSubmit={handleSubmit}
       >
         <Heading textAlign="center" fontSize="xl" pb="2">

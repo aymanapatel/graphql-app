@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useQuery, useApolloClient, gql } from "@apollo/client";
-import { Helmet } from "react-helmet";
-import { graphql, useStaticQuery } from "gatsby";
 import {
   Box,
   Flex,
@@ -12,6 +10,8 @@ import {
   Text,
   Link,
 } from "@chakra-ui/core";
+import { Helmet } from "react-helmet";
+import { graphql, useStaticQuery } from "gatsby";
 
 const LOGGED_IN_QUERY = gql`
   {
@@ -68,12 +68,13 @@ function JobListings() {
 
 function LoginForm() {
   const client = useApolloClient();
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   async function handleSubmit(event) {
     event.preventDefault();
+
+    setLoading(true);
 
     const response = await fetch("/.netlify/functions/auth", {
       headers: {
@@ -86,27 +87,26 @@ function LoginForm() {
     if (response.ok) {
       const token = await response.text();
       localStorage.setItem("journey:token", token);
-      client.writeQuery({
-        query: LOGGED_IN_QUERY,
-        data: { isLoggedIn: true },
-      });
+      client.resetStore();
+    } else {
+      const error = await response.text();
+      setError(new Error(error));
+      setLoading(false);
     }
-
-    // TODO: handle errors
   }
 
   return (
-    <Flex h="100vh" align="center" justify="center" bgImage="url('https://images.unsplash.com/photo-1596923563916-cee5bcd96ef2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+    <Flex h="100vh" align="center" justify="center" bg="white">
       <Stack
         p="8"
         rounded="lg"
-        shadow="33px 33px 86px #F5DEB3,
-        -33px -33px 86px #FFA07A"
+        shadow="33px 33px 86px #e6e6e6,
+        -33px -33px 86px #ffffff"
         maxW="320px"
         w="full"
         as="form"
         spacing="4"
-        bgImage="linear-gradient(to bottom right,#ffe5b4, #ffffff)"
+        bg="white"
         onSubmit={handleSubmit}
       >
         <Heading textAlign="center" fontSize="xl" pb="2">
@@ -124,7 +124,7 @@ function LoginForm() {
 }
 
 export default function Index() {
-  const { data, loading, error, client } = useQuery(LOGGED_IN_QUERY);
+  const { data, client } = useQuery(LOGGED_IN_QUERY);
 
   const { site } = useStaticQuery(
     graphql`
@@ -146,18 +146,15 @@ export default function Index() {
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <Box as="header" py="3" px="4" bg="gray.100">
-        {title}
-      </Box>
       {isLoggedIn ? (
         <>
+          <Box as="header" py="3" px="4" bg="gray.100">
+            {title}
+          </Box>
           <Button
             onClick={() => {
               localStorage.removeItem("journey:token");
-              client.writeQuery({
-                query: LOGGED_IN_QUERY,
-                data: { isLoggedIn: false },
-              });
+              client.resetStore();
             }}
           >
             Log Out

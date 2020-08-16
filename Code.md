@@ -1,6 +1,12 @@
+# Running
+
+1. Personal laptop: Node version `v10.15.1`
+2. Run using `netlify dev`
+
+
 # Cypress
 
-- `cypress open`
+- `cypress open` or `./node_modules/.bin/cypress open`
 - Tests in `smoke.js`
 - Add testing library in `support/commands.js`
 

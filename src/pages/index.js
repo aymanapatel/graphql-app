@@ -56,11 +56,11 @@ const JOB_LISTINGS = gql`
 function JobListings() {
   const { data, loading, error } = useQuery(JOB_LISTINGS);
 
-  if (loading) return <div>Loading the universe...</div>;
+  if (loading) return <div>Loading JobPosting graphql...</div>;
   if (error) {
     return (
       <>
-        <div>Universe broken...</div>
+        <div>JobListings() broken...</div>
         <p>{error.message}</p>
       </>
     );
@@ -100,7 +100,7 @@ function LoginForm() {
 
     if (response.ok) {
       const token = await response.text();
-      localStorage.setItem("journey:token", token);
+      localStorage.setItem("jobapp:token", token);
       client.resetStore();
     } else {
       const error = await response.text();
@@ -227,7 +227,7 @@ export default function Index() {
           <Button
           size="sm"
             onClick={() => {
-              localStorage.removeItem("journey:token");
+              localStorage.removeItem("jobapp:token");
               client.resetStore();
             }}
           >

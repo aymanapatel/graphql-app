@@ -27,7 +27,7 @@ const client = new ApolloClient({
     resolvers: {
         Query: {
             isLoggedIn() {
-                const token = localStorage.getItem("journey:token");
+                const token = localStorage.getItem("jobapp:token");
                 return Boolean(token);
             }
         }

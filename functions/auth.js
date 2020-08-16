@@ -2,28 +2,8 @@ const Sequelize = require('sequelize');
 const bcrypt = require('bcryptjs');
 const basicAuth = require('basic-auth');
 const jwt = require('jsonwebtoken');
+const { sequelize, User } = require("../db");
 
-
-const sequelize = new Sequelize(process.env.DB_CONNECTION_STRING, {
-    dialect: "postgres",
-    dialectOptions: {
-      ssl: true,
-    },
-  });
-  
-
-
-  class User extends Sequelize.Model {}
-  User.init(
-    {
-      email: Sequelize.STRING,
-      password: Sequelize.STRING,
-    },
-    {
-      sequelize,
-      modelName: "user",
-    }
-  );
   
   exports.handler = async (event) => {
   

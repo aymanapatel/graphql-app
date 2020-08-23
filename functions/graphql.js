@@ -46,17 +46,43 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    listings(_, __, { user }) {
-      return user.getListings();
-    },
-  },
-  Mutation: {
-    createListing(_, { input }, { user }) {
-      return Listing.create({ ...input, userId: user.id });
-    },
-  },
-};
-
+      /*graphqlPlayground: (parent, args, contenxt) => {
+          return "Hello from the other side"
+      }*/
+      listings() {
+          return [
+              {
+                  id: 1,
+                  title: "Software Developer",
+                  description: "Google Cloud Platform",
+                  url: "www.google.com",
+                  note: null,
+                  company: {
+                      id: 121,
+                      name: "Google",
+                      url: "www.google.com",
+                      listings: null
+                  },
+                  contacts: []
+              },
+              {
+                  id: 2,
+                  title: "Software Advocate",
+                  description: "Hashicorp Multi-cloud",
+                  url: "www.hashicorp.com",
+                  note: null,
+                  company: {
+                      id: 121,
+                      name: "Hashicorp",
+                      url: "www.hashicorp.com",
+                      listings: null
+                  },
+                  contacts: []
+              }
+          ]
+      }
+  }
+}
 const server = new ApolloServer({
   typeDefs,
   resolvers,

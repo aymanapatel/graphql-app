@@ -1,10 +1,19 @@
 const Sequelize = require("sequelize");
-
+/* Production: Using env variable
 const sequelize = new Sequelize(process.env.DB_CONNECTION_STRING, {
   dialect: "pg",
   dialectModule: require('pg'),
   dialectOptions: {
     ssl: true,
+  },
+});
+*/
+// Local: Check local folder
+const sequelize = new Sequelize("postgres://journey:root@localhost/job_app", {
+  dialect: "pg",
+  dialectModule: require('pg'),
+  dialectOptions: {
+    ssl: false,
   },
 });
 

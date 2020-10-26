@@ -1,5 +1,7 @@
 # Job App
 
+![HitCount](http://hits.dwyl.com/aymanapatel/graphql-app.svg)
+
 <h2 align="center">
   Made with :love_letter: using 
 </h2>
